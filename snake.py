@@ -15,7 +15,7 @@ class Player:
     speed = 10
     size = 10
     score = 0
-    direction = 0   # 0 = Right || 1 = Up || 2 = Left || 3 = Down #
+    direction = 0 
     coords = [[width/2, height/2]]
     alive = True
 
@@ -28,29 +28,29 @@ class Player:
 
     def updateDirection(self):
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_RIGHT and self.direction != 2:    # Turn Right #
+            if event.key == pygame.K_RIGHT and self.direction != 2:    
                 self.direction = 0
 
-            if event.key == pygame.K_UP and self.direction != 3:    # Turn Up #
+            if event.key == pygame.K_UP and self.direction != 3:   
                 self.direction = 1
 
-            if event.key == pygame.K_LEFT and self.direction != 0:    # Turn Left #
+            if event.key == pygame.K_LEFT and self.direction != 0:   
                 self.direction = 2
 
-            if event.key == pygame.K_DOWN and self.direction != 1:    # Turn Down #
+            if event.key == pygame.K_DOWN and self.direction != 1: 
                 self.direction = 3
 
     def updatePosition(self):
-        if self.direction == 0:     # Move Right #
+        if self.direction == 0:   
             self.x += self.speed
 
-        if self.direction == 1:     # Move Up #
+        if self.direction == 1:   
             self.y -= self.speed
 
-        if self.direction == 2:     # Move Left #
+        if self.direction == 2:
             self.x -= self.speed
 
-        if self.direction == 3:     # Move Down #
+        if self.direction == 3: 
             self.y += self.speed
         self.coords.insert(0, [self.x, self.y])
 
@@ -69,7 +69,7 @@ class Food:
         self.y = random.randint(0, math.floor(height/10)-1)*10
 
     def update(self):
-        if self.x == int(self.target.x) and self.y == int(self.target.y):     # On collision #
+        if self.x == int(self.target.x) and self.y == int(self.target.y):    
             self.newCoords()
             self.target.score += 1
         else:
@@ -89,7 +89,7 @@ game_window = pygame.display.set_mode((width, height))
 
 while True:
 
-    for event in pygame.event.get():    # Event handling
+    for event in pygame.event.get():   
         if event.type != pygame.QUIT:
             snake.updateDirection()
         else:
